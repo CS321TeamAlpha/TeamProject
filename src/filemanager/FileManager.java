@@ -1,8 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   FileManager.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Author: Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package filemanager;
 
 import java.beans.XMLDecoder;
@@ -16,6 +22,11 @@ import java.io.FileOutputStream;
  * @author Bernard
  */
 public class FileManager {
+    /**
+     * Parses an Object into an XML file
+     * @param object The object to save as XML
+     * @param filename The name of the file in which to save the object
+     */
     public static void saveObjectToXML(Object object, String filename){
         XMLEncoder encoder;
         try{
@@ -28,6 +39,11 @@ public class FileManager {
         }
     }
     
+    /**
+     * Creates an Object from an XML file
+     * @param filename The name of the file to from which to create the Object
+     * @return A newly instantiated Object containing the data from the file
+     */
     public static Object LoadObjectFromXML(String filename){
         XMLDecoder decoder;
         try{
