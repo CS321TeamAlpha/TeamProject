@@ -6,16 +6,14 @@
 *       Adam McFry
 *       Mitchell Whitehead
 *       Bernard Sabatini
-*   Author: 
 *   Date: Oct 2018
 *******************************************************************/
 package cafekiosk;
 
+import GUI.StartScreen;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -26,25 +24,15 @@ import javafx.stage.Stage;
 public class CafeKiosk extends Application {
     
     @Override
-    public void start(Stage primaryStage) {
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        
+    public void start(Stage primaryStage) {    
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        Pane startScreen = new StartScreen();
         
+        root.getChildren().add(startScreen);
         Scene scene = new Scene(root, 300, 250);
-        
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Cafe Kiosk");
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();   
     }
 
     /**
@@ -52,6 +40,5 @@ public class CafeKiosk extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }
-    
+    }    
 }
