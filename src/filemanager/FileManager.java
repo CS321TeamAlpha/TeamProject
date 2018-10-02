@@ -6,7 +6,6 @@
 *       Adam McFry
 *       Mitchell Whitehead
 *       Bernard Sabatini
-*   Author: Bernard Sabatini
 *   Date: Oct 2018
 *******************************************************************/
 package filemanager;
