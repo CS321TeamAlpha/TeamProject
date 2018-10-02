@@ -1,16 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   State.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package StateMachine;
 
 import javafx.scene.Node;
 
 /**
- *
+ * An interface for various states of a state machine
  * @author Bernard
  */
 public interface State {
+    /**
+     * A function to return the javafx GUI component of this state
+     * @param machine a reference to the state machine
+     * @return a javafx GUI Node
+     */
     Node getGUI(FSM machine);
 }

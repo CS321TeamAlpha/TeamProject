@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
- *
+ * A utility to handle xml files
  * @author Bernard
  */
 public class FileManager {

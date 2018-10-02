@@ -1,5 +1,5 @@
 /*******************************************************************
-*   FileManager.java
+*   CafeKiosk.java
 *   CS321 Group Project: Cafe Kiosk
 *   Team: Alpha
 *       Angela Allison
@@ -21,7 +21,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * A Kiosk Simulator
  * @author Bernard
  */
 public class CafeKiosk extends Application implements FSM {
@@ -64,5 +64,14 @@ public class CafeKiosk extends Application implements FSM {
     @Override
     public Node getGUI(){
         return states.peek().getGUI(this);
+    }
+    
+    @Override
+    public void reset(){
+        while(states.size() > 1){
+            states.pop();
+        }
+        root.getChildren().clear();
+        root.getChildren().add(getGUI());
     }
 }

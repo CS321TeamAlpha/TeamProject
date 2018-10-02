@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   StartState.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package StateMachine;
 
 import javafx.geometry.Pos;
@@ -12,7 +17,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * A specific implementation of State that serves as a starting point
  * @author Bernard
  */
 public class StartState implements State{
