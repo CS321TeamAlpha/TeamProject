@@ -37,7 +37,7 @@ public class CafeKiosk extends Application implements FSM {
         Scene scene = new Scene(root, 800, 600);
         primaryStage.setTitle("Cafe Kiosk");
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();   
     }
 
     /**
