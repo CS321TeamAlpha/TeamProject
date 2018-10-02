@@ -10,10 +10,13 @@
 *******************************************************************/
 package cafekiosk;
 
-import GUI.StartScreen;
+import StateMachine.FSM;
+import StateMachine.StartState;
+import StateMachine.State;
+import java.util.Stack;
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -21,18 +24,20 @@ import javafx.stage.Stage;
  *
  * @author Bernard
  */
-public class CafeKiosk extends Application {
+public class CafeKiosk extends Application implements FSM {
+    private final Stack<State> states = new Stack();
+    private final StackPane root = new StackPane();
     
     @Override
-    public void start(Stage primaryStage) {    
-        StackPane root = new StackPane();
-        Pane startScreen = new StartScreen();
+    public void start(Stage primaryStage) {
+        pushState(new StartState());
+               
+        root.getChildren().add(getGUI());
         
-        root.getChildren().add(startScreen);
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 800, 600);
         primaryStage.setTitle("Cafe Kiosk");
         primaryStage.setScene(scene);
-        primaryStage.show();   
+        primaryStage.show();
     }
 
     /**
@@ -40,5 +45,24 @@ public class CafeKiosk extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-    }    
+    }  
+    
+    @Override
+    public void pushState(State state){
+        states.push(state);
+        root.getChildren().clear();
+        root.getChildren().add(getGUI());
+    }
+    
+    @Override
+    public void popState(){
+        states.pop();
+        root.getChildren().clear();
+        root.getChildren().add(getGUI());       
+    }
+    
+    @Override
+    public Node getGUI(){
+        return states.peek().getGUI(this);
+    }
 }
