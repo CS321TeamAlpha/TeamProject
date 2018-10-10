@@ -8,7 +8,7 @@
 *       Bernard Sabatini
 *   Date: Oct 2018
 *******************************************************************/
-package filemanager;
+package DataLoader;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;

@@ -5,7 +5,7 @@
  */
 package Model;
 
-import filemanager.XMLDataLoader;
+import DataLoader.XMLDataLoader;
 import java.util.ArrayList;
 import java.util.List;
 
