@@ -34,6 +34,9 @@ public class LoginState implements State{
         centerPane.setAlignment(Pos.CENTER);
         centerPane.setPadding(new Insets(5));
         
+        Label lbl_Welcome = new Label("Welcome to [Insert Cafe Name Here]!" +
+                "\r\nPlease log in to place an order");
+                
         Label lbl_UserName = new Label("User Name:");
         TextField fld_UserName = new TextField();
         
@@ -53,16 +56,23 @@ public class LoginState implements State{
         
         Button btn_Login = new Button("Log In");
         btn_Login.setOnAction((event) -> {
-            //machine.pushState(new ManagerState());
+            System.out.println("Still working on this! (^_^)");
         });
         buttonBar.getChildren().add(btn_Login);
         
-        Button btn_Cancel = new Button("Cancel");
-        btn_Cancel.setOnAction((event) -> {
-            machine.popState();
+        Button btn_NewAccount = new Button("Create Account");
+        btn_NewAccount.setOnAction((event) -> {
+            System.out.println("Still working on this! (^_^)");
         });
-        buttonBar.getChildren().add(btn_Cancel);
+        buttonBar.getChildren().add(btn_NewAccount);
         
+//        Button btn_Cancel = new Button("Cancel");
+//        btn_Cancel.setOnAction((event) -> {
+//            machine.popState();
+//        });
+//        buttonBar.getChildren().add(btn_Cancel);
+        
+        pane.setTop(lbl_Welcome);
         pane.setCenter(centerPane);
         pane.setBottom(buttonBar);
         
