@@ -56,7 +56,7 @@ public class BrowseState implements State{
         ComboBox<Store> cbo_Stores = new ComboBox(stores);
         ListView<MenuItem> lst_Items = new ListView(items);
         
-        stores.setAll(StoreManager.Instance().getItems());
+        stores.setAll(StoreManager.get().getItems());
         
         cbo_Stores.setValue(stores.get(0));
         cbo_Stores.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
