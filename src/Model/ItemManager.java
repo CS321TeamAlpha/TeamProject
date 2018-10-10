@@ -5,7 +5,7 @@
  */
 package Model;
 
-import filemanager.FileManager;
+import filemanager.XMLDataLoader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class ItemManager {
     private List<ItemBase> items;
     
     private ItemManager(){
-        items = (ArrayList<ItemBase>)FileManager.loadObjectFromXML("MasterItemList.xml");
+        items = (ArrayList<ItemBase>)XMLDataLoader.get().loadData("MasterItemList.xml");
         if (items != null){
             items.sort(null);
         } else {
@@ -26,7 +26,7 @@ public class ItemManager {
         }
     }
     
-    public static ItemManager Instance(){
+    public static ItemManager get(){
         if(instance==null){
             instance = new ItemManager();
         }

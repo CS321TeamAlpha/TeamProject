@@ -5,7 +5,7 @@
  */
 package Model;
 
-import filemanager.FileManager;
+import filemanager.XMLDataLoader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class StoreManager {
     private List<Store> stores;
     
     private StoreManager(){
-        stores = (ArrayList<Store>)FileManager.loadObjectFromXML("MasterStoreList.xml");
+        stores = (ArrayList<Store>)XMLDataLoader.get().loadData("MasterStoreList.xml");
         if (stores != null){
             stores.sort(null);
         } else {
@@ -26,7 +26,7 @@ public class StoreManager {
         }
     }
     
-    public static StoreManager Instance(){
+    public static StoreManager get(){
         if(instance == null){
             instance = new StoreManager();
         }
