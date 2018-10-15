@@ -1,21 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   Store.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bs0084
+ * Representation of a Store with a set of menus
+ * 
  */
 public class Store {
     private String name;
     private Menu activeMenu;
-    private List<Menu> menus;
+    private final List<Menu> menus;
     
     public Store(){
         menus = new ArrayList();

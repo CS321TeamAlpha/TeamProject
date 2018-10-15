@@ -1,13 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   ItemOption.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package Model;
 
 /**
- *
- * @author Bernard
+ * A derived class of ItemBase, making use of the Decorator Design Pattern
+ * 
  */
 public abstract class ItemOption extends ItemBase{
     protected ItemBase decoratee;

@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   StoreManager.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package Model;
 
 import DataLoader.XMLDataLoader;
@@ -10,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author bs0084
+ * Singleton class which manages the master list of Stores
+ * 
  */
 public class StoreManager {
     private static StoreManager instance;

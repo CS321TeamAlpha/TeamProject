@@ -17,8 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
- * A utility to handle xml files
- * @author Bernard
+ * A derived DataLoader to handle xml files
+ * 
  */
 public class XMLDataLoader implements DataLoader {
     private static XMLDataLoader instance;

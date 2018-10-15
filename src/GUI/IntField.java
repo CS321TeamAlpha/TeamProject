@@ -13,8 +13,8 @@ package GUI;
 import javafx.scene.control.TextField;
 
 /**
- *
- * @author Bernard
+ * A modified javafx TextField to properly handle integers
+ * 
  */
 public class IntField extends TextField{
     

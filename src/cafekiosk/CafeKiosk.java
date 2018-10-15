@@ -11,38 +11,37 @@
 package cafekiosk;
 
 import Model.Item;
-import Model.ItemManager;
 import Model.ItemBase;
 import Model.Menu;
 import Model.MenuItem;
 import Model.Store;
 import Model.StoreManager;
 import StateMachine.FSM;
-import StateMachine.StartState;
+import StateMachine.LoginState;
 import StateMachine.State;
 import java.util.Stack;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * A Kiosk Simulator
- * @author Bernard
+ * A simulator for an on-line purchasing system
+ * 
  */
 public class CafeKiosk extends Application implements FSM {
-    private final ItemManager itemManager = ItemManager.get();
-    private final StoreManager storeManager = StoreManager.get();
+//    private final ItemManager itemManager = ItemManager.get();
+//    private final StoreManager storeManager = StoreManager.get();
     private final Stack<State> states = new Stack();
-    private final StackPane root = new StackPane();
+    private final BorderPane root = new BorderPane();
     
     @Override
     public void start(Stage primaryStage) {
         GenerateTestData();
-        pushState(new StartState());
+        pushState(new LoginState());
                
-        root.getChildren().add(getGUI());
+        //root.getChildren().add(getGUI());
         
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("Cafe Kiosk");
@@ -60,15 +59,13 @@ public class CafeKiosk extends Application implements FSM {
     @Override
     public void pushState(State state){
         states.push(state);
-        root.getChildren().clear();
-        root.getChildren().add(getGUI());
+        root.setCenter(getGUI());
     }
     
     @Override
     public void popState(){
         states.pop();
-        root.getChildren().clear();
-        root.getChildren().add(getGUI());       
+        root.setCenter(getGUI());
     }
     
     @Override
@@ -81,8 +78,7 @@ public class CafeKiosk extends Application implements FSM {
         while(states.size() > 1){
             states.pop();
         }
-        root.getChildren().clear();
-        root.getChildren().add(getGUI());
+        root.setCenter(getGUI());
     }
     
     public void GenerateTestData(){

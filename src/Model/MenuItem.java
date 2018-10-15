@@ -1,19 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   MenuItem.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package Model;
 
 /**
- *
- * @author bs0084
+ * Representation of a purchasable item for a menu
+ * 
  */
 public class MenuItem {
     ItemBase item;
     
     public MenuItem(ItemBase item){
         this.item = item;
+    }
+    
+    public ItemBase getItemBase(){
+        return item;
     }
     
     public String getName(){
