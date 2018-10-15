@@ -14,7 +14,7 @@ import javafx.scene.Node;
 
 /**
  * An interface for various states of a state machine
- * @author Bernard
+ * 
  */
 public interface State {
     /**

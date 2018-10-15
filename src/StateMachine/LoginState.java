@@ -10,6 +10,7 @@
 *******************************************************************/
 package StateMachine;
 
+import Model.Account;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -22,8 +23,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 /**
- * A specific Implementation of State to handle login information
- * @author Bernard
+ * A specific Implementation of State to handle login authentication
+ * 
  */
 public class LoginState implements State{
    
@@ -56,7 +57,7 @@ public class LoginState implements State{
         
         Button btn_Login = new Button("Log In");
         btn_Login.setOnAction((event) -> {
-            System.out.println("Still working on this! (^_^)");
+            machine.pushState(new LoggedInState(new Account()));
         });
         buttonBar.getChildren().add(btn_Login);
         

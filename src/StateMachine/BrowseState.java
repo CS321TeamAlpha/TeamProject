@@ -10,38 +10,38 @@
 *******************************************************************/
 package StateMachine;
 
+import Model.Account;
 import Model.MenuItem;
+import Model.Order;
 import Model.Store;
-import Model.StoreManager;
 import Utilities.Utilities;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
  * A specific implementation of State to browse a list of items
- * @author Bernard
+ * 
  */
 public class BrowseState implements State{
-    ObservableList<Store> stores;
+    //ObservableList<Store> stores;
     ObservableList<MenuItem> items;
+    Store store;
+    Order order;
     //MenuItem currentItem;
     
-    public BrowseState(){
-        stores = FXCollections.observableArrayList();
+    public BrowseState(Account account, Store store){
+        //stores = FXCollections.observableArrayList();
         items = FXCollections.observableArrayList();
+        this.store = store;
+        order = new Order(account, store);
         //currentItem = null;
     }
     
@@ -53,18 +53,18 @@ public class BrowseState implements State{
         menuBox.setPadding(new Insets(5));
         menuBox.setSpacing(5);        
         
-        ComboBox<Store> cbo_Stores = new ComboBox(stores);
+//        ComboBox<Store> cbo_Stores = new ComboBox(stores);
         ListView<MenuItem> lst_Items = new ListView(items);
         
-        stores.setAll(StoreManager.get().getItems());
-        
-        cbo_Stores.setValue(stores.get(0));
-        cbo_Stores.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
-            items.setAll(newValue.getActiveMenuItems());
-            lst_Items.getSelectionModel().select(0);
-        });
-                
-        items.setAll(cbo_Stores.getValue().getActiveMenuItems());
+//        stores.setAll(StoreManager.get().getItems());
+//        
+//        cbo_Stores.setValue(stores.get(0));
+//        cbo_Stores.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
+//            items.setAll(newValue.getActiveMenuItems());
+//            lst_Items.getSelectionModel().select(0);
+//        });
+//                
+        items.setAll(store.getActiveMenuItems());
         
         lst_Items.getSelectionModel().select(0);
         lst_Items.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
@@ -73,7 +73,7 @@ public class BrowseState implements State{
             }
         });
         
-        menuBox.getChildren().addAll(cbo_Stores, lst_Items);
+        menuBox.getChildren().add(lst_Items);
               
         HBox buttonBar = new HBox();
         buttonBar.setPadding(new Insets(5));
@@ -81,11 +81,11 @@ public class BrowseState implements State{
         
         Button btn_ViewOrder = new Button("View Order");
         btn_ViewOrder.setOnAction((event) -> {
-            machine.pushState(new CartViewState());
+            machine.pushState(new CartViewState(order));
         });
         buttonBar.getChildren().add(btn_ViewOrder);
         
-        Button btn_Back = new Button("Back to Start");
+        Button btn_Back = new Button("Change Store");
         btn_Back.setOnAction((event) -> {
             machine.popState();
         });
@@ -121,7 +121,7 @@ public class BrowseState implements State{
         
         Button btn_AddToOrder = new Button("Add to Order");
         btn_AddToOrder.setOnAction((event)->{
-            System.out.println("Still Working on this portion! (^_^)");
+            order.addItem(item.getItemBase());
         });
         buttonBox.getChildren().addAll(btn_AddToOrder);
         
