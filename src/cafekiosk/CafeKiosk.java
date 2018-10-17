@@ -10,10 +10,15 @@
 *******************************************************************/
 package cafekiosk;
 
+import Model.Account;
+import Model.AccountManager;
+import Model.AccountType;
 import Model.Item;
 import Model.ItemBase;
+import Model.ItemManager;
 import Model.Menu;
 import Model.MenuItem;
+import Model.OrderManager;
 import Model.Store;
 import Model.StoreManager;
 import StateMachine.FSM;
@@ -31,8 +36,10 @@ import javafx.stage.Stage;
  * 
  */
 public class CafeKiosk extends Application implements FSM {
-//    private final ItemManager itemManager = ItemManager.get();
-//    private final StoreManager storeManager = StoreManager.get();
+    private final ItemManager itemManager = ItemManager.get();
+    private final StoreManager storeManager = StoreManager.get();
+    private final OrderManager orderManager = OrderManager.get();
+    private final AccountManager accountManager = AccountManager.get();
     private final Stack<State> states = new Stack();
     private final BorderPane root = new BorderPane();
     
@@ -82,10 +89,21 @@ public class CafeKiosk extends Application implements FSM {
     }
     
     public void GenerateTestData(){
+        if (!AccountManager.get().accountExists("admin")){
+            Account adminAccount = new Account("admin", "password", AccountType.MANAGER);
+            AccountManager.get().add(adminAccount);
+        }
+        if (!AccountManager.get().accountExists("user")){
+            Account adminAccount = new Account("user", "password", AccountType.USER);
+            AccountManager.get().add(adminAccount);
+        }
+        
         Store newStore1 = new Store();
         newStore1.setName("Test Store 1");
         Store newStore2 = new Store();
         newStore2.setName("Test Store 2");
+        StoreManager.get().add(newStore1);
+        StoreManager.get().add(newStore2);
         
         Menu newMenu1 = new Menu();
         newMenu1.setName("Test Menu 1");
@@ -101,6 +119,8 @@ public class CafeKiosk extends Application implements FSM {
         ItemBase itemprof2 = new Item();
         itemprof2.setName("Tea");
         itemprof2.setPrice(100);
+        ItemManager.get().add(itemprof1);
+        ItemManager.get().add(itemprof2);
         
         MenuItem menuItem11 = new MenuItem(itemprof1);
         MenuItem menuItem12 = new MenuItem(itemprof2);
@@ -109,8 +129,5 @@ public class CafeKiosk extends Application implements FSM {
         newMenu1.add(menuItem11);
         newMenu2.add(menuItem12);
         newMenu2.add(menuItem21);
-        
-        StoreManager.get().add(newStore1);
-        StoreManager.get().add(newStore2);
     }
 }
