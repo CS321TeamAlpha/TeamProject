@@ -41,4 +41,8 @@ public class ItemManager {
     public List<ItemBase> getItems(){
         return items;
     }
+    
+    public void add(ItemBase item){
+        items.add(item);
+    }
 }
