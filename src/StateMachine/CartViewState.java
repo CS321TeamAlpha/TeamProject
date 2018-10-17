@@ -22,7 +22,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 /**
  * A specific implementation of State to view a shopping cart
@@ -98,9 +98,9 @@ public class CartViewState implements State{
         Button btn_Remove = new Button("X");
         btn_Remove.setOnAction((event) ->{
             order.removeItem(item);
-            lbl_Name.setTextFill(Color.web("#FF0000"));
+            lbl_Name.setTextFill(Paint.valueOf("#FF0000"));
             lbl_Price.setText(Utilities.intToCurrencyString(0));
-            lbl_Price.setTextFill(Color.web("#FF0000"));
+            lbl_Price.setTextFill(Paint.valueOf("#FF0000"));
         });
         itemEntry.getChildren().add(btn_Remove);
         return itemEntry;
