@@ -1,5 +1,5 @@
 /*******************************************************************
-*   BrowseState.java
+*   LoginState.java
 *   CS321 Group Project: Cafe Kiosk
 *   Team: Alpha
 *       Angela Allison
@@ -10,10 +10,9 @@
 *******************************************************************/
 package StateMachine;
 
-import Model.Account;
-import Model.MenuItem;
-import Model.Order;
-import Model.Store;
+import GUI.CurrencyField;
+import Model.Item;
+import Model.ItemManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -26,32 +25,26 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
- * A specific implementation of State to browse a list of items
+ * Specific State to handle the editing of purchasable items
  * 
  */
-public class BrowseState implements State{
-    ObservableList<MenuItem> items;
-    Store store;
-    Order order;
+public class EditItemsState implements State{
+    ObservableList<Item> items;
     
-    public BrowseState(Account account, Store store){
+    public EditItemsState(){
         items = FXCollections.observableArrayList();
-        this.store = store;
-        order = new Order(account, store);
+        items.setAll(ItemManager.get().getItems());
     }
     
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
         
-        VBox menuBox = new VBox();
-        menuBox.setPadding(new Insets(5));
-        menuBox.setSpacing(5);        
+        VBox itemBox = new VBox();
+        itemBox.setPadding(new Insets(5));
+        itemBox.setSpacing(5);        
         
-        ListView<MenuItem> lst_Items = new ListView(items);
-     
-        items.setAll(store.getActiveMenuItems());
-        
+        ListView<Item> lst_Items = new ListView(items);        
         lst_Items.getSelectionModel().select(0);
         lst_Items.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
             if(newValue != null){
@@ -59,32 +52,37 @@ public class BrowseState implements State{
             }
         });
         
-        menuBox.getChildren().add(lst_Items);
-              
+        itemBox.getChildren().add(lst_Items);
+        
         HBox buttonBar = new HBox();
         buttonBar.setPadding(new Insets(5));
         buttonBar.setSpacing(5);
         
-        Button btn_ViewOrder = new Button("View Order");
-        btn_ViewOrder.setOnAction((event) -> {
-            machine.pushState(new CartViewState(order));
+        Button btn_AddItem = new Button("Add Item");
+        btn_AddItem.setOnAction((event) -> {
+            
         });
-        buttonBar.getChildren().add(btn_ViewOrder);
+        buttonBar.getChildren().add(btn_AddItem);
         
-        Button btn_Back = new Button("Change Store");
+        Button btn_DeleteItem = new Button("Delete Item");
+        btn_DeleteItem.setOnAction((event) -> {
+            
+        });
+        buttonBar.getChildren().add(btn_DeleteItem);
+        
+        Button btn_Back = new Button("Return to Management");
         btn_Back.setOnAction((event) -> {
             machine.popState();
         });
         buttonBar.getChildren().add(btn_Back);
         
-        pane.setLeft(menuBox);
+        pane.setLeft(itemBox);
         pane.setCenter(ItemDetails(lst_Items.getSelectionModel().getSelectedItem()));
         pane.setBottom(buttonBar);
-        
         return pane;
     }
     
-    public Node ItemDetails(MenuItem item){
+    public Node ItemDetails(Item item){
         BorderPane detailPane = new BorderPane();
         
         HBox detailBox = new HBox();
@@ -93,26 +91,25 @@ public class BrowseState implements State{
         
         TextField detailName = new TextField();
         detailName.setText(item.getName());
-        detailName.setEditable(false);
+        detailName.textProperty().addListener((observer, oldValue, newValue) -> {
+            item.setName(newValue);
+        });
         
-        TextField detailPrice = new TextField();
-        detailPrice.setText(Double.toString(item.getPrice()));
-        detailPrice.setEditable(false);
-        
+        CurrencyField detailPrice = new CurrencyField();
+        detailPrice.setText(String.format("$%3.2f", item.getPrice()));
+        detailPrice.textProperty().addListener((observer, oldValue, newValue) -> {
+            if (newValue.matches("[$]?[0-9]{0,3}([.][0-9]{0,2})?")){
+                detailPrice.setText(newValue);
+                item.setPrice(Item.stringToDouble(newValue));
+                items.setAll(ItemManager.get().getItems());
+            } else {
+                detailPrice.setText(oldValue);
+            }            
+        });
+
         detailBox.getChildren().addAll(detailName, detailPrice);
         
-        HBox buttonBox = new HBox();
-        buttonBox.setPadding(new Insets(5));
-        buttonBox.setSpacing(5);
-        
-        Button btn_AddToOrder = new Button("Add to Order");
-        btn_AddToOrder.setOnAction((event)->{
-            order.addItem(item.getItemBase());
-        });
-        buttonBox.getChildren().addAll(btn_AddToOrder);
-        
-        detailPane.setTop(detailBox);
-        detailPane.setBottom(buttonBox);
+        detailPane.setCenter(detailBox);
         
         return detailPane;
     }

@@ -12,8 +12,6 @@ package StateMachine;
 
 import Model.ItemBase;
 import Model.Order;
-import Model.OrderManager;
-import Utilities.Utilities;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -65,8 +63,7 @@ public class CartViewState implements State{
         
         Button btn_Purchase = new Button("Purchase");
         btn_Purchase.setOnAction((event) -> {
-            order.setDate();
-            OrderManager.get().add(order);
+            order.purchaseOrder();
             machine.pushState(new PurchaseConfirmedState());
         });
         buttonBar.getChildren().add(btn_Purchase);
@@ -90,7 +87,7 @@ public class CartViewState implements State{
         lbl_Name.setAlignment(Pos.CENTER_LEFT);
         itemEntry.getChildren().add(lbl_Name);
         
-        Label lbl_Price = new Label(Utilities.intToCurrencyString(item.getPrice()));
+        Label lbl_Price = new Label(Double.toString(item.getPrice()));
         lbl_Price.setPrefWidth(200);
         lbl_Price.setAlignment(Pos.CENTER_RIGHT);
         itemEntry.getChildren().add(lbl_Price);
@@ -99,7 +96,7 @@ public class CartViewState implements State{
         btn_Remove.setOnAction((event) ->{
             order.removeItem(item);
             lbl_Name.setTextFill(Paint.valueOf("#FF0000"));
-            lbl_Price.setText(Utilities.intToCurrencyString(0));
+            lbl_Price.setText("0.00");
             lbl_Price.setTextFill(Paint.valueOf("#FF0000"));
         });
         itemEntry.getChildren().add(btn_Remove);

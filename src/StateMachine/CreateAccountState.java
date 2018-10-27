@@ -54,7 +54,7 @@ public class CreateAccountState implements State{
         btn_Create.setOnAction((event) ->{
             String userName = fld_UserName.getText();
             String password = fld_Password.getText();
-            if (!AccountManager.get().accountExists(userName)){
+            if (!AccountManager.get(null).accountExists(userName)){
                 Account newAccount = new Account(
                         userName, 
                         password, 

@@ -17,22 +17,30 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 /**
- * A derived DataLoader to handle xml files
- * 
+ * A derived DataLoader to handle .xml files.
+ * Implemented as a Singleton class
  */
 public class XMLDataLoader implements DataLoader {
     private static XMLDataLoader instance;
     
+    /**
+     * private constructor for Singleton loading
+     */
     private XMLDataLoader(){
         
     }
     
+    /**
+     * static get function to get the Singleton instance
+     * @return the sole instance of XMLDataLoader
+     */
     public static XMLDataLoader get(){
         if(instance==null){
             instance = new XMLDataLoader();
         }
         return instance;
     }
+    
     /**
      * Parses an Object into an XML file
      * @param object The object to save as XML

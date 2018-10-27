@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -51,7 +52,23 @@ public class LoginState implements State{
         
         Label lbl_Password = new Label("Password");
         PasswordField fld_Password = new PasswordField();
-        
+        fld_Password.setOnKeyPressed((event) ->{
+            KeyCode keyCode = event.getCode();
+            if (keyCode.equals(KeyCode.ENTER)){
+                String userName = fld_UserName.getText();
+                String password = fld_Password.getText();
+                Account account = AccountManager.get().validateAccount(userName,password);
+                if(account != null){
+                    if(account.getAccountType() == AccountType.MANAGER){
+                        machine.pushState(new ManagerLoggedInState(account));
+                    } else {
+                        machine.pushState(new LoggedInState(account));
+                    }
+                } else {
+                    lbl_Status.setText("user name or password is incorrect.");
+                }
+            }
+        });
         centerPane.add(lbl_Status, 0,0,2,1);
         centerPane.add(lbl_UserName, 0,1);
         centerPane.add(fld_UserName, 1,1);
@@ -75,7 +92,7 @@ public class LoginState implements State{
                 }
             } else {
                 lbl_Status.setText("user name or password is incorrect.");
-            }        
+            }
         });
         buttonBar.getChildren().add(btn_Login);
         
@@ -106,5 +123,5 @@ public class LoginState implements State{
         pane.setBottom(buttonBar);
         
         return pane;
-    }    
+    }
 }
