@@ -10,6 +10,7 @@
 *******************************************************************/
 package cafekiosk;
 
+import DataLoader.XMLDataLoader;
 import Model.AccountManager;
 import Model.ItemManager;
 import Model.OrderManager;
@@ -48,6 +49,19 @@ public class CafeKiosk extends Application implements FSM {
         
         Scene scene = new Scene(root, 600, 400);
         primaryStage.setTitle("Cafe Kiosk");
+        primaryStage.setOnCloseRequest(event -> {
+            System.out.println("Saving files:");
+            XMLDataLoader.get().saveData(
+                    itemManager.getItems(), "MasterItemList.xml");
+            XMLDataLoader.get().saveData(
+                    itemManager.getOptions(), "MasterOptionList.xml");
+            XMLDataLoader.get().saveData(
+                    orderManager.getItems(), "MasterOrderList.xml");
+            XMLDataLoader.get().saveData(
+                    storeManager.getItems(), "MasterStoreList.xml");
+            XMLDataLoader.get().saveData(
+                    accountManager.getItems(), "MasterAccountList.xml");
+        });
         primaryStage.setScene(scene);
         primaryStage.show();   
     }
