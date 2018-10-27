@@ -25,9 +25,17 @@ public class Menu {
      * Default Constructor: Required for XML Encoding
      */
     public Menu(){
-        items = new ArrayList();
+        items = new ArrayList();    
     }
-    
+     /**
+     * This is the copy constructor that allows the master menu to be duplicated
+     * @param original
+     */
+    public Menu(Menu original)
+    {
+        this.items = original.items;
+ 
+    }
     /**
      * Standard get function for name
      * @return name
@@ -76,4 +84,5 @@ public class Menu {
     public String toString(){
         return name;
     }
+ 
 }

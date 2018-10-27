@@ -27,7 +27,9 @@ public class Store implements Comparable<Store>{
      */
     public Store(){
         menus = new ArrayList();
+        Menu menu = new Menu(MenuManager.get().getMenu());  
     }    
+    
     
     /**
      * Primary Constructor.  Initializes this Store with a name
