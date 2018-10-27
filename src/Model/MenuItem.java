@@ -21,6 +21,8 @@ import java.util.List;
 public class MenuItem {
     ItemBase item;
     DrinkSize size;
+    boolean available;  
+            
     List<MenuOption> options;
     
     /**
@@ -29,6 +31,7 @@ public class MenuItem {
     public MenuItem(){
         size = DrinkSize.SMALL;
         options = new ArrayList();
+        available = true;
     }
     
     /**
@@ -150,5 +153,23 @@ public class MenuItem {
     @Override
     public String toString(){
         return item.toString();
+    }
+    
+    /**
+     * This is a get function for available 
+     * @return available
+     */
+    
+    public boolean getAvailable(){
+        
+        return available;
+    }
+    /**
+    * This is a set function for available 
+    * @param available 
+    */
+    public void setAvailable(boolean available){
+       
+        this.available = available; 
     }
 }
