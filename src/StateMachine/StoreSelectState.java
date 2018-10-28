@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 public class StoreSelectState implements State{
     private Account account;
     public StoreSelectState(Account account){
-        account = this.account;
+        this.account = account;
     }
     
     @Override

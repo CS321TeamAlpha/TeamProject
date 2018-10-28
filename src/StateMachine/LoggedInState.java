@@ -16,6 +16,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -26,8 +27,9 @@ import javafx.scene.layout.HBox;
 public class LoggedInState implements State, FSM{
     private final Stack<State> states = new Stack();
     private final BorderPane root = new BorderPane();
-    
+    private final Account account;
     public LoggedInState(Account account){
+        this.account = account;
         states.push(new StoreSelectState(account));
     }
     
@@ -37,6 +39,9 @@ public class LoggedInState implements State, FSM{
         buttonBar.setSpacing(5);
         buttonBar.setAlignment(Pos.CENTER_RIGHT);
         buttonBar.setPadding(new Insets(5));
+        
+        Label lbl_UserName = new Label(account.getName());
+        buttonBar.getChildren().add(lbl_UserName);
         
         Button btn_EditProfile = new Button("Edit Profile");
         btn_EditProfile.setOnAction((event) ->{

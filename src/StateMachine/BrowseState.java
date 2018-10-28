@@ -11,16 +11,22 @@
 package StateMachine;
 
 import Model.Account;
+import Model.DrinkSize;
+import Model.ItemBase;
 import Model.MenuItem;
+import Model.MenuOption;
 import Model.Order;
 import Model.Store;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -86,32 +92,56 @@ public class BrowseState implements State{
     
     public Node ItemDetails(MenuItem item){
         BorderPane detailPane = new BorderPane();
-        
-        HBox detailBox = new HBox();
-        detailBox.setPadding(new Insets(5));
+        VBox detailBox = new VBox();
         detailBox.setSpacing(5);
         
-        TextField detailName = new TextField();
-        detailName.setText(item.getName());
-        detailName.setEditable(false);
+        Label lbl_Item = new Label(item.toString());
+
+        HBox sizeBox = new HBox();
+        sizeBox.setPadding(new Insets(5));
+        sizeBox.setSpacing(5);
+        detailBox.getChildren().add(sizeBox);
         
-        TextField detailPrice = new TextField();
-        detailPrice.setText(Double.toString(item.getPrice()));
-        detailPrice.setEditable(false);
+        Label sizeLabel = new Label("Size: ");
+        sizeLabel.setPrefHeight(25);
+        sizeLabel.setAlignment(Pos.CENTER);
         
-        detailBox.getChildren().addAll(detailName, detailPrice);
+        ObservableList<DrinkSize> sizeList = FXCollections.observableArrayList(DrinkSize.values());
+        ComboBox<DrinkSize> sizeSelector = new ComboBox(sizeList);
+        sizeSelector.setValue(item.getSize());
+        sizeSelector.getSelectionModel().selectedItemProperty().addListener((observer, oldValue, newValue) ->{
+            item.setDrinkSize(newValue);
+        });
+        
+        sizeBox.getChildren().addAll(sizeLabel, sizeSelector);
+        
+        for(MenuOption option : item.getOptions()){           
+            CheckBox optionCheck = new CheckBox();
+            optionCheck.setText(option.toString());
+            optionCheck.setSelected(option.getSelected());
+            optionCheck.selectedProperty().addListener((observer, oldValue, newValue) ->{
+               option.select(newValue);
+            });
+
+            detailBox.getChildren().add(optionCheck);
+        }
         
         HBox buttonBox = new HBox();
         buttonBox.setPadding(new Insets(5));
         buttonBox.setSpacing(5);
         
+        Label lbl_Status = new Label();
+        
         Button btn_AddToOrder = new Button("Add to Order");
         btn_AddToOrder.setOnAction((event)->{
-            order.addItem(item.getItemBase());
+            ItemBase newItem = item.buildItem();
+            order.addItem(newItem);
+            lbl_Status.setText("Added " + newItem.getName() + " to Order.");
         });
-        buttonBox.getChildren().addAll(btn_AddToOrder);
+        buttonBox.getChildren().addAll(btn_AddToOrder, lbl_Status);
         
-        detailPane.setTop(detailBox);
+        detailPane.setTop(lbl_Item);
+        detailPane.setCenter(detailBox);
         detailPane.setBottom(buttonBox);
         
         return detailPane;

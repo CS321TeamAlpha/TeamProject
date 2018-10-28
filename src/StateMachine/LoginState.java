@@ -105,7 +105,7 @@ public class LoginState implements State{
         // *** Convenience Buttons.  Remove for actual use ***
         Button btn_FastLogin = new Button("Fast User Login");
         btn_FastLogin.setOnAction((event) -> {
-            Account account = AccountManager.get().validateAccount("user", "password");
+            Account account = AccountManager.get().validateAccount("Bob", "password");
             machine.pushState(new LoggedInState(account));
         });
         buttonBar.getChildren().add(btn_FastLogin);
