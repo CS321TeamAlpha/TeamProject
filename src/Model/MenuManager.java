@@ -32,11 +32,7 @@ public class MenuManager {
             menu = null;
         }
         
-        if (menu != null)
-        {
-
-        } 
-        else 
+        if (menu == null)
         {
             menu = new Menu();
         }
@@ -76,6 +72,5 @@ public class MenuManager {
     public Menu getMenu(){
         return menu;
     }
-    
 }
 

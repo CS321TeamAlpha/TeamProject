@@ -19,9 +19,9 @@ import java.util.List;
  * 
  */
 public class MenuItem {
-    ItemBase item;
-    DrinkSize size;
-    List<MenuOption> options;
+    private ItemBase item;
+    private DrinkSize size;
+    private List<MenuOption> options;
     
     /**
      * Default Constructor: Required for XML Encoding
@@ -78,7 +78,7 @@ public class MenuItem {
      * Standard set function for size
      * @param size the size to set
      */
-    public void setSize(DrinkSize size){
+    public void setDrinkSize(DrinkSize size){
         this.size = size;
     }
     

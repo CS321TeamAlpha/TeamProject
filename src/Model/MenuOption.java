@@ -62,8 +62,24 @@ public class MenuOption {
      * Standard set function for selected
      * @param selected whether this option is selected or not
      */    
-    public void setSelected(boolean selected){
+    public void select(boolean selected){
         this.selected = selected;
+    }
+    
+    /**
+     * Convenience function; fetches the name of the referenced item
+     * @return name of referenced item
+     */
+    public String getName(){
+        return option.getName();
+    }
+    
+    /**
+     * Convenience function; fetches the price of the referenced item
+     * @return price of referenced item
+     */
+    public double getPrice(){
+        return option.getPrice();
     }
     
     /**

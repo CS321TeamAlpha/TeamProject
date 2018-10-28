@@ -98,6 +98,6 @@ public class ItemOption implements ItemBase{
      */
     @Override
     public String toString(){
-        return getName() + " " + String.format("$%3.2f", getPrice());
+        return getName() + " +" + String.format("$%3.2f", getPrice());
     }
 }
