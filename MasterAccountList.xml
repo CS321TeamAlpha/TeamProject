@@ -46,5 +46,18 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="Model.Account">
+    <void property="accountType">
+     <object idref="AccountType0"/>
+    </void>
+    <void property="name">
+     <string>bs0084</string>
+    </void>
+    <void property="password">
+     <string>password</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>

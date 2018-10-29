@@ -7,7 +7,7 @@
      <string>Coffee</string>
     </void>
     <void property="price">
-     <double>0.56</double>
+     <double>5.0</double>
     </void>
    </object>
   </void>
@@ -17,7 +17,47 @@
      <string>Tea</string>
     </void>
     <void property="price">
-     <double>0.45</double>
+     <double>2.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Item">
+    <void property="name">
+     <string>Coffee</string>
+    </void>
+    <void property="price">
+     <double>5.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Item">
+    <void property="name">
+     <string>Tea</string>
+    </void>
+    <void property="price">
+     <double>2.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Item">
+    <void property="name">
+     <string>Coffee</string>
+    </void>
+    <void property="price">
+     <double>5.0</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Item">
+    <void property="name">
+     <string>Tea</string>
+    </void>
+    <void property="price">
+     <double>2.0</double>
     </void>
    </object>
   </void>

@@ -4,20 +4,10 @@
   <void method="add">
    <object class="Model.ItemOption">
     <void property="name">
-     <string>Whip Cream</string>
+     <string>Cream</string>
     </void>
     <void property="price">
-     <double>0.1</double>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="Model.ItemOption">
-    <void property="name">
-     <string>Honey</string>
-    </void>
-    <void property="price">
-     <double>0.15</double>
+     <double>0.5</double>
     </void>
    </object>
   </void>
@@ -27,7 +17,77 @@
      <string>Sugar</string>
     </void>
     <void property="price">
-     <double>0.1</double>
+     <double>0.25</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Honey</string>
+    </void>
+    <void property="price">
+     <double>0.75</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Cream</string>
+    </void>
+    <void property="price">
+     <double>0.5</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Sugar</string>
+    </void>
+    <void property="price">
+     <double>0.25</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Honey</string>
+    </void>
+    <void property="price">
+     <double>0.75</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Cream</string>
+    </void>
+    <void property="price">
+     <double>0.5</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Sugar</string>
+    </void>
+    <void property="price">
+     <double>0.25</double>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.ItemOption">
+    <void property="name">
+     <string>Honey</string>
+    </void>
+    <void property="price">
+     <double>0.75</double>
     </void>
    </object>
   </void>
