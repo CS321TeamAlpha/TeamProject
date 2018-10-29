@@ -13,6 +13,7 @@ package cafekiosk;
 import DataLoader.XMLDataLoader;
 import Model.AccountManager;
 import Model.ItemManager;
+import Model.MenuManager;
 import Model.OrderManager;
 import Model.StoreManager;
 import StateMachine.FSM;
@@ -32,17 +33,23 @@ import javafx.stage.Stage;
 public class CafeKiosk extends Application implements FSM {
     private final ItemManager itemManager = 
             ItemManager.get("MasterItemList.xml", "MasterOptionList.xml");
+    private final MenuManager menuManager =
+            MenuManager.get("MasterMenu.xml");
     private final StoreManager storeManager = 
             StoreManager.get("MasterStoreList.xml");
     private final OrderManager orderManager = 
             OrderManager.get("MasterOrderList.xml");
     private final AccountManager accountManager = 
             AccountManager.get("MasterAccountList.xml");
+    
     private final Stack<State> states = new Stack();
     private final BorderPane root = new BorderPane();
     
     @Override
     public void start(Stage primaryStage) {
+//        TestData testData = new TestData();
+//        testData.generate();
+        
         pushState(new LoginState());
                
         //root.getChildren().add(getGUI());
@@ -61,6 +68,8 @@ public class CafeKiosk extends Application implements FSM {
                     storeManager.getItems(), "MasterStoreList.xml");
             XMLDataLoader.get().saveData(
                     accountManager.getItems(), "MasterAccountList.xml");
+            XMLDataLoader.get().saveData(
+                    menuManager.getMenu(), "MasterMenu.xml");
         });
         primaryStage.setScene(scene);
         primaryStage.show();   
