@@ -28,6 +28,11 @@ public class Menu {
         items = new ArrayList();
     }
     
+    public Menu(Menu original){
+        for (MenuItem menuItem : items){
+            this.items.add(menuItem);
+        }
+    }
     /**
      * Standard get function for name
      * @return name

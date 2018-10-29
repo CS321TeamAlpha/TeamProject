@@ -27,6 +27,15 @@ public class Item implements ItemBase, Comparable<Item>{
     }
     
     /**
+     * Primary Constructor which creates object with a name and price.
+     * @param name The name of the item
+     * @param price The price of the item
+     */
+    public Item(String name, double price){
+        this.name = name;
+        this.price = price;
+    }
+    /**
      * Standard get function for name
      * @return name
      */

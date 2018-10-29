@@ -20,13 +20,21 @@ import java.util.List;
 public class Store implements Comparable<Store>{
     private String name;
     private Menu activeMenu;
-    private List<Menu> menus;
+    //private List<Menu> menus;
+    private List<MenuItem> items;
+    private List<MenuOption> options;
     
     /**
      * Default Constructor: Required for XML Encoding
      */
     public Store(){
-        menus = new ArrayList();
+        this.name = "Unamed";
+        items = new ArrayList();
+        options = new ArrayList();
+        activeMenu = new Menu();
+        //menus = new ArrayList();
+        
+        LoadMenu();
     }    
     
     /**
@@ -35,7 +43,12 @@ public class Store implements Comparable<Store>{
      */
     public Store(String name){
         this.name = name;
-        menus = new ArrayList();
+        items = new ArrayList();
+        options = new ArrayList();
+        activeMenu = new Menu();
+        //menus = new ArrayList();
+        
+        LoadMenu();        
     }
     
     /**
@@ -50,7 +63,7 @@ public class Store implements Comparable<Store>{
      * Returns the currently active menu at this store
      * @return activeMenu
      */
-    public Menu getActiveMenu(){
+    public Menu getMenu(){
         return activeMenu;
     }
     
@@ -58,9 +71,9 @@ public class Store implements Comparable<Store>{
      * Returns a list of available menus at this store
      * @return menus
      */
-    public List<Menu> getMenus(){
-        return menus;
-    }
+//    public List<Menu> getMenus(){
+//        return menus;
+//    }
     
     /**
      * Standard set function for name
@@ -74,27 +87,27 @@ public class Store implements Comparable<Store>{
      * Standard set function for menu
      * @param menu the Menu to be made active
      */
-    public void setActiveMenu(Menu menu){
-        this.activeMenu = menu;
-    }
+//    public void setActiveMenu(Menu menu){
+//        this.activeMenu = menu;
+//    }
     
     /**
      * Standard set function for menus
      * @param menus the list of Menus to assign to this store
      */
-    public void setMenus(List<Menu> menus){
-        this.menus = menus;
-    }
+//    public void setMenus(List<Menu> menus){
+//        this.menus = menus;
+//    }
     
     /**
      * Adds a menu to the list of available menus
      * @param menu the menu to add
      */
-    public void addMenu(Menu menu){
-        menus.add(menu);
-        if(activeMenu == null)
-            activeMenu = menu;
-    }
+//    public void addMenu(Menu menu){
+//        menus.add(menu);
+//        if(activeMenu == null)
+//            activeMenu = menu;
+//    }
     
     /**
      * Returns a list of items on the active menu
@@ -121,5 +134,45 @@ public class Store implements Comparable<Store>{
     @Override
     public int compareTo(Store o) {
         return name.compareTo(o.getName());
+    }
+    
+    private void LoadMenu(){
+        // Every Time a store is created, it needs a deep copy of the Master
+        // Menu so that each store can mark items as unavailable for just its
+        // menu.
+        Menu masterMenu = MenuManager.get().getMenu();
+        
+        // For every MenuItem in the MasterMenu
+        for (MenuItem masterItem : masterMenu.getItems()){
+            // Copy that MenuItem and add it to the store's list
+            // The copy constructor for MenuItem does not populate its options
+            // list however, since those too have to be a deep copy.
+            MenuItem item = new MenuItem(masterItem);
+            items.add(item);
+            // And add the item to the local menu
+            activeMenu.addItem(item);
+            
+            // So for each MenuOption for this MenuItem from the Master Menu
+            for(MenuOption masterOption : masterItem.getOptions()){
+                MenuOption current = null;
+                // Check to see if there is already a local copy in the Store,
+                // and if so store it in 'current'
+                for(MenuOption option : options){
+                    current = option.returnIfMatch(masterOption.getName());
+                    if (current != null){
+                        break;
+                    }
+                }
+                // By this point 'current' will either have a local reference
+                // or be null if no local copy was found.  If it is null, then
+                // create a local copy and put in the store's MenuOption list
+                if (current == null){
+                    current = new MenuOption(masterOption);
+                    options.add(current);
+                }
+                // And add the option to the item
+                item.addOption(current);
+            }
+        }
     }
 }

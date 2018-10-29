@@ -22,15 +22,23 @@ public class MenuItem {
     private ItemBase item;
     private DrinkSize size;
     private List<MenuOption> options;
-    
+    private boolean available;
     /**
      * Default Constructor: Required for XML Encoding
      */
     public MenuItem(){
         size = DrinkSize.SMALL;
         options = new ArrayList();
+        available = true;
     }
     
+    
+    public MenuItem(MenuItem original){
+        this.item = original.item;
+        this.size = original.size;
+        options = new ArrayList();
+        available = true;
+    }
     /**
      * Primary Constructor.  Initializes this MenuItem with a reference to an
      * ItemBase object
@@ -66,6 +74,10 @@ public class MenuItem {
         return options;
     }
     
+    public boolean isAvailable(){
+        return available;
+    }
+    
     /**
      * Standard set function for item
      * @param item the item to set
@@ -88,6 +100,10 @@ public class MenuItem {
      */
     public void setOptions(List<MenuOption> options){
         this.options = options;
+    }
+    
+    public void setAvailable(boolean available){
+        this.available = available;
     }
     
     /**

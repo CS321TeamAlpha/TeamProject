@@ -50,12 +50,14 @@ public class BrowseState implements State{
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
         
+        Label lbl_Store = new Label ("Store: " + store.getName());
+        
         VBox menuBox = new VBox();
         menuBox.setPadding(new Insets(5));
         menuBox.setSpacing(5);        
         
         ListView<MenuItem> lst_Items = new ListView(items);
-     
+    
         items.setAll(store.getActiveMenuItems());
         
         lst_Items.getSelectionModel().select(0);
@@ -83,6 +85,7 @@ public class BrowseState implements State{
         });
         buttonBar.getChildren().add(btn_Back);
         
+        pane.setTop(lbl_Store);
         pane.setLeft(menuBox);
         pane.setCenter(ItemDetails(lst_Items.getSelectionModel().getSelectedItem()));
         pane.setBottom(buttonBar);
@@ -115,7 +118,7 @@ public class BrowseState implements State{
         
         sizeBox.getChildren().addAll(sizeLabel, sizeSelector);
         
-        for(MenuOption option : item.getOptions()){           
+        for(MenuOption option : item.getOptions()){            
             CheckBox optionCheck = new CheckBox();
             optionCheck.setText(option.toString());
             optionCheck.setSelected(option.getSelected());
@@ -124,6 +127,10 @@ public class BrowseState implements State{
             });
 
             detailBox.getChildren().add(optionCheck);
+            if (!option.isAvailable()){
+                optionCheck.setText(option.toString() + "-Out of Stock");
+                optionCheck.disableProperty();
+            }
         }
         
         HBox buttonBox = new HBox();
@@ -144,6 +151,10 @@ public class BrowseState implements State{
         detailPane.setCenter(detailBox);
         detailPane.setBottom(buttonBox);
         
+        if(!item.isAvailable()){
+            detailPane.disableProperty();
+        }
+            
         return detailPane;
     }
 }

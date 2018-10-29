@@ -16,12 +16,14 @@ package Model;
 public class MenuOption {
     private ItemOption option;
     private boolean selected;
+    private boolean available;
     
     /**
      * Default Constructor: Required for XML Encoding
      */
     public MenuOption(){
         selected = false;
+        available = true;
     }
     
     /**
@@ -34,6 +36,11 @@ public class MenuOption {
         selected = false;
     }
     
+    public MenuOption(MenuOption original){
+        this.option = original.option;
+        this.selected = false;
+        this.available = true;
+    }
     /**
      * Returns the base reference item
      * @return item
@@ -48,6 +55,10 @@ public class MenuOption {
      */
     public boolean getSelected(){
         return selected;
+    }    
+    
+    public boolean isAvailable(){
+        return available;
     }
     
     /**
@@ -57,7 +68,11 @@ public class MenuOption {
     public void setOption(ItemOption option){
         this.option = option;
     }
-
+    
+    public void setAvailable(boolean available){
+        this.available = available;
+    }
+            
     /**
      * Standard set function for selected
      * @param selected whether this option is selected or not
@@ -81,7 +96,7 @@ public class MenuOption {
     public double getPrice(){
         return option.getPrice();
     }
-    
+        
     /**
      * Overridden toString
      * @return the referenced option's String
@@ -89,5 +104,12 @@ public class MenuOption {
     @Override
     public String toString(){
         return option.toString();
+    }
+    
+    public MenuOption returnIfMatch(String name){
+        if (this.getName().equals(name)){
+            return this;
+        }
+        return null;
     }
 }
