@@ -23,6 +23,7 @@ public class MenuItem {
     private DrinkSize size;
     private List<MenuOption> options;
     private boolean available;
+
     /**
      * Default Constructor: Required for XML Encoding
      */
@@ -30,8 +31,7 @@ public class MenuItem {
         size = DrinkSize.SMALL;
         options = new ArrayList();
         available = true;
-    }
-    
+    }    
     
     public MenuItem(MenuItem original){
         this.item = original.item;
@@ -102,6 +102,10 @@ public class MenuItem {
         this.options = options;
     }
     
+    /**
+     * This is a set function for available 
+     * @param available 
+     */
     public void setAvailable(boolean available){
         this.available = available;
     }
@@ -166,5 +170,15 @@ public class MenuItem {
     @Override
     public String toString(){
         return item.toString();
+    }
+    
+    /**
+     * This is a get function for available 
+     * @return available
+     */
+    
+    public boolean getAvailable(){
+        
+        return available;
     }
 }

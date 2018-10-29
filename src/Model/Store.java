@@ -37,6 +37,7 @@ public class Store implements Comparable<Store>{
         LoadMenu();
     }    
     
+    
     /**
      * Primary Constructor.  Initializes this Store with a name
      * @param name The name of the new Store
