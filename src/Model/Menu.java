@@ -37,7 +37,7 @@ public class Menu {
             this.items.add(menuItem);
         }
     }
-    
+
     /**
      * Standard get function for name
      * @return name
