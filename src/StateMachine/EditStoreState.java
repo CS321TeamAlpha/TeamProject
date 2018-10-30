@@ -1,22 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   EditStoreState.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package StateMachine;
 
 import Model.MenuItem;
 import Model.MenuOption;
 import Model.Store;
 import Model.StoreManager;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -25,7 +28,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * A State providing edit abilities to Stores and their menus
  */
 public class EditStoreState implements State{
     private final ObservableList<Store> storeList;
@@ -70,7 +73,7 @@ public class EditStoreState implements State{
         return pane;
     }
     
-    public BorderPane buildDetail(Store selectedStore){
+    private BorderPane buildDetail(Store selectedStore){
         BorderPane detailPane = new BorderPane();
         detailPane.setPadding(new Insets(5));
 
