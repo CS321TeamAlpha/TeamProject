@@ -47,8 +47,8 @@ public class CafeKiosk extends Application implements FSM {
     
     @Override
     public void start(Stage primaryStage) {
-//        TestData testData = new TestData();
-//        testData.generate();
+      //TestData testData = new TestData();
+      //testData.generate();
         
         pushState(new LoginState());
                
