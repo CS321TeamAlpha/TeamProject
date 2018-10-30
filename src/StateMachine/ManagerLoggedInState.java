@@ -39,11 +39,11 @@ public class ManagerLoggedInState implements State, FSM{
         buttonBar.setAlignment(Pos.CENTER_RIGHT);
         buttonBar.setPadding(new Insets(5));
         
-        Button btn_Shutdown = new Button("Shutdown");
-        btn_Shutdown.setOnAction((event) ->{
-            System.out.println("Still working on this! (^_^)");
-        });
-        buttonBar.getChildren().add(btn_Shutdown);
+//        Button btn_Shutdown = new Button("Shutdown");
+//        btn_Shutdown.setOnAction((event) ->{
+//            System.out.println("Still working on this! (^_^)");
+//        });
+//        buttonBar.getChildren().add(btn_Shutdown);
         
         Button btn_EditProfile = new Button("Edit Profile");
         btn_EditProfile.setOnAction((event) ->{

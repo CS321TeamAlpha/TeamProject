@@ -129,7 +129,7 @@ public class BrowseState implements State{
             detailBox.getChildren().add(optionCheck);
             if (!option.isAvailable()){
                 optionCheck.setText(option.toString() + "-Out of Stock");
-                optionCheck.disableProperty();
+                optionCheck.setDisable(true);
             }
         }
         
@@ -152,7 +152,8 @@ public class BrowseState implements State{
         detailPane.setBottom(buttonBox);
         
         if(!item.isAvailable()){
-            detailPane.disableProperty();
+            lbl_Item.setText(item.toString() + "-Out of Stock");
+            detailPane.setDisable(true);
         }
             
         return detailPane;

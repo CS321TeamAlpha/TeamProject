@@ -33,41 +33,41 @@ public class ManagerMenuState implements State{
         centerPane.setHgap(5);
         centerPane.setVgap(5);
         
-        Button btn_EditStores = new Button("Edit Stores");
-        btn_EditStores.setPrefWidth(200);
-        btn_EditStores.setOnAction((event) ->{
-            System.out.println("Still Working on this portion! (^_^)");
-        });
-        
-        Button btn_EditItems = new Button("Edit Items");
-        btn_EditItems.setPrefWidth(200);
-        btn_EditItems.setOnAction((event) ->{
-            machine.pushState(new EditItemsState());
-        });
-        
-        Button btn_EditOptions = new Button("Edit Options");
-        btn_EditOptions.setPrefWidth(200);
-        btn_EditOptions.setOnAction((event) ->{
-            System.out.println("Still Working on this portion! (^_^)");
-        });
-        
-        Button btn_EditMenus = new Button("Edit Menus");
-        btn_EditMenus.setPrefWidth(200);
-        btn_EditMenus.setOnAction((event) ->{
-            System.out.println("Still Working on this portion! (^_^)");
-        });
-        
         Button btn_EditAccounts = new Button("Edit Accounts");
         btn_EditAccounts.setPrefWidth(200);
         btn_EditAccounts.setOnAction((event) ->{
             System.out.println("Still Working on this portion! (^_^)");
         });
         
-        centerPane.add(btn_EditStores, 1, 1);
-        centerPane.add(btn_EditItems, 1, 2);
-        centerPane.add(btn_EditOptions, 1, 3);
-        centerPane.add(btn_EditMenus, 1, 4);
-        centerPane.add(btn_EditAccounts, 1, 5);
+        Button btn_EditStores = new Button("Edit Stores");
+        btn_EditStores.setPrefWidth(200);
+        btn_EditStores.setOnAction((event) ->{
+            machine.pushState(new EditStoreState());
+        });
+        
+//        Button btn_EditItems = new Button("Edit Items");
+//        btn_EditItems.setPrefWidth(200);
+//        btn_EditItems.setOnAction((event) ->{
+//            machine.pushState(new EditItemsState());
+//        });
+//        
+//        Button btn_EditOptions = new Button("Edit Options");
+//        btn_EditOptions.setPrefWidth(200);
+//        btn_EditOptions.setOnAction((event) ->{
+//            System.out.println("Still Working on this portion! (^_^)");
+//        });
+//        
+//        Button btn_EditMenus = new Button("Edit Menus");
+//        btn_EditMenus.setPrefWidth(200);
+//        btn_EditMenus.setOnAction((event) ->{
+//            System.out.println("Still Working on this portion! (^_^)");
+//        });        
+        
+        centerPane.add(btn_EditAccounts, 1, 1);
+        centerPane.add(btn_EditStores, 1, 2);
+//        centerPane.add(btn_EditItems, 1, 2);
+//        centerPane.add(btn_EditOptions, 1, 3);
+//        centerPane.add(btn_EditMenus, 1, 4);        
         
         pane.setCenter(centerPane);
         

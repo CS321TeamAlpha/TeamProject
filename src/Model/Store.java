@@ -35,9 +35,7 @@ public class Store implements Comparable<Store>{
         //menus = new ArrayList();
         
         LoadMenu();
-    }    
-    
-    
+    }
     
     /**
      * Primary Constructor.  Initializes this Store with a name
@@ -116,9 +114,12 @@ public class Store implements Comparable<Store>{
      * @return a list of items on the active menu
      */
     public List<MenuItem> getActiveMenuItems(){
-        return activeMenu.getItems();
+        return items;
     }
     
+    public List<MenuOption> getActiveMenuOptions(){
+        return options;
+    }
     /**
      * Overridden toString
      * @return the name of the store
