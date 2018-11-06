@@ -65,6 +65,13 @@ public class ItemOption implements ItemBase{
             return decoratee.getName() + " +" + name;
         return name;
     }
+    //used to print out the decorated item line by line, rather than all in one line
+    @Override
+    public String getName_multiLine() {
+        if (decoratee != null)
+            return decoratee.getName_multiLine() + "\n\t" + name;
+        return name;
+    }
     /**
      * Calculates the total price of the decoratee and the decorator
      * @return the total price

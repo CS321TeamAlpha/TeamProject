@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.8.0_181" class="java.beans.XMLDecoder">
+<java version="1.8.0_131" class="java.beans.XMLDecoder">
  <object class="java.util.ArrayList">
   <void method="add">
    <object class="Model.Order" id="Order0">
@@ -7,21 +7,31 @@
      <void method="add">
       <object class="Model.ItemOption">
        <void property="name">
-        <string>Coffee +Sm +Whip Cream +Sugar</string>
+        <string>Dark Roast Coffee +Small</string>
        </void>
        <void property="price">
-        <double>0.76</double>
+        <double>1.95</double>
+       </void>
+      </object>
+     </void>
+     <void method="add">
+      <object class="Model.ItemOption">
+       <void property="name">
+        <string>Dark Roast Coffee +Small +Whip</string>
+       </void>
+       <void property="price">
+        <double>1.95</double>
        </void>
       </object>
      </void>
     </void>
     <void property="purchaseDate">
-     <string>2018-10-27T20:33:30.068</string>
+     <string>2018-11-06T13:34:42.497</string>
     </void>
     <void property="purchaser">
      <object class="Model.Account">
       <void property="accountType">
-       <object class="java.lang.Enum" method="valueOf">
+       <object class="java.lang.Enum" id="AccountType0" method="valueOf">
         <class>Model.AccountType</class>
         <string>USER</string>
        </object>
@@ -31,6 +41,52 @@
       </void>
       <void property="password">
        <string>password</string>
+      </void>
+     </object>
+    </void>
+    <void property="store">
+     <object class="Model.Store">
+      <void property="name">
+       <string>Store 1</string>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="Model.Order" id="Order1">
+    <void property="items">
+     <void method="add">
+      <object class="Model.ItemOption">
+       <void property="name">
+        <string>Dark Roast Coffee +Small</string>
+       </void>
+       <void property="price">
+        <double>1.95</double>
+       </void>
+      </object>
+     </void>
+    </void>
+    <void property="purchaseDate">
+     <string>2018-11-06T13:49:05.521</string>
+    </void>
+    <void property="purchaser">
+     <object class="Model.Account">
+      <void property="accountType">
+       <object idref="AccountType0"/>
+      </void>
+      <void property="name">
+       <string>Guest</string>
+      </void>
+      <void property="password">
+       <string>password</string>
+      </void>
+     </object>
+    </void>
+    <void property="store">
+     <object class="Model.Store">
+      <void property="name">
+       <string>Store 1</string>
       </void>
      </object>
     </void>

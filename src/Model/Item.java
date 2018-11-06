@@ -43,6 +43,11 @@ public class Item implements ItemBase, Comparable<Item>{
     public String getName() {
         return name;
     }
+    
+    @Override
+    public String getName_multiLine() {
+        return name;
+    }
 
     /**
      * Standard get function for price

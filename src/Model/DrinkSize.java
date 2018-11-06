@@ -16,9 +16,9 @@ package Model;
  *  drink sizes are a special case
  */
 public enum DrinkSize {
-    SMALL ("Sm", 0.0),
-    MEDIUM ("Md", 0.20),
-    LARGE ("Lg", 0.40);
+    SMALL ("Small", 0.0),
+    MEDIUM ("Medium", 0.20),
+    LARGE ("Large", 0.40);
     
     private final String name;
     private final double price;

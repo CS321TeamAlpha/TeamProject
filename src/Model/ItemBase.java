@@ -17,4 +17,5 @@ package Model;
 public interface ItemBase {
     public String getName();
     public double getPrice();
+    public String getName_multiLine();
 }
