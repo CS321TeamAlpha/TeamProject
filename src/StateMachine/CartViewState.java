@@ -18,6 +18,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -42,6 +44,7 @@ public class CartViewState implements State{
         Label lbl_PurchaseHeader = new Label();
         VBox orderBox = new VBox();
         HBox totalBox = new HBox();
+        ScrollPane scroll = new ScrollPane();
         TextField fld_Total = new TextField("Total");
         CurrencyField fld_TotalPrice = new CurrencyField();
         HBox buttonBar = new HBox();
@@ -50,7 +53,7 @@ public class CartViewState implements State{
         
         pane.setPadding(new Insets(5));
         pane.setTop(purchaseHeader);
-        pane.setCenter(orderBox);        
+        pane.setCenter(scroll);        
         pane.setBottom(buttonBar);
         
         purchaseHeader.setAlignment(Pos.CENTER); 
@@ -61,14 +64,18 @@ public class CartViewState implements State{
                 order.getStore().getName() + ":";        
         lbl_PurchaseHeader.setText(purchaseStr);
         
+        //edit 10.30
+        scroll.setContent(orderBox);
         orderBox.setPadding(new Insets(5));
         orderBox.setSpacing(5);
+
         
         for(ItemBase item : order.getItems()){
             HBox itemEntry = new HBox();
             itemEntry.setSpacing(5);
 
-            TextField fld_Name = new TextField(item.getName());
+            //edited on 10.30
+            TextArea fld_Name = new TextArea(item.getName_multiLine());
             fld_Name.setPrefWidth(400);
             fld_Name.setEditable(false);
             itemEntry.getChildren().add(fld_Name);

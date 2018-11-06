@@ -63,7 +63,7 @@ public class ManagerMenuState implements State{
 //            System.out.println("Still Working on this portion! (^_^)");
 //        });        
         
-        centerPane.add(btn_EditAccounts, 1, 1);
+        //centerPane.add(btn_EditAccounts, 1, 1);
         centerPane.add(btn_EditStores, 1, 2);
 //        centerPane.add(btn_EditItems, 1, 2);
 //        centerPane.add(btn_EditOptions, 1, 3);

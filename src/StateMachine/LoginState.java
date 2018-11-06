@@ -41,10 +41,10 @@ public class LoginState implements State{
         centerPane.setVgap(5);
         centerPane.setHgap(5);
         
-        Label lbl_Welcome = new Label("Welcome to [Insert Cafe Name Here]!" +
-                "\r\nPlease log in to place an order");
+        Label lbl_Welcome = new Label("\n\t\t\t\t\t\tWelcome to [Insert Cafe Name Here]!" +
+                "\r\n\t\t\t\t\t\t\tPlease log in to place an order");
         
-        Label lbl_Status = new Label("Manager username: 'admin'\r\npassword: 'password'");
+        Label lbl_Status = new Label("");
         lbl_Status.setTextFill(Paint.valueOf("FF0000"));
         
         Label lbl_UserName = new Label("User Name");
@@ -69,7 +69,7 @@ public class LoginState implements State{
                 }
             }
         });
-        centerPane.add(lbl_Status, 0,0,2,1);
+        //centerPane.add(lbl_Status, 0,0,2,1);
         centerPane.add(lbl_UserName, 0,1);
         centerPane.add(fld_UserName, 1,1);
         centerPane.add(lbl_Password, 0,2);
@@ -103,14 +103,14 @@ public class LoginState implements State{
         buttonBar.getChildren().add(btn_NewAccount);
         
         // *** Convenience Buttons.  Remove for actual use ***
-        Button btn_FastLogin = new Button("Fast User Login");
+        Button btn_FastLogin = new Button("Guest User Login");
         btn_FastLogin.setOnAction((event) -> {
-            Account account = AccountManager.get().validateAccount("Bob", "password");
+            Account account = AccountManager.get().validateAccount("Guest", "password");
             machine.pushState(new LoggedInState(account));
         });
         buttonBar.getChildren().add(btn_FastLogin);
         
-        Button btn_FastManager = new Button("Fast Manager Login");
+        Button btn_FastManager = new Button("Guest Manager Login");
         btn_FastManager.setOnAction((event) -> {
             Account account = AccountManager.get().validateAccount("admin", "password");
             machine.pushState(new ManagerLoggedInState(account));

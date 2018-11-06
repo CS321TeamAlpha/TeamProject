@@ -121,7 +121,7 @@ public class BrowseState implements State{
         for(MenuOption option : item.getOptions()){            
             CheckBox optionCheck = new CheckBox();
             optionCheck.setText(option.toString());
-            optionCheck.setSelected(option.getSelected());
+            optionCheck.setSelected(false);
             optionCheck.selectedProperty().addListener((observer, oldValue, newValue) ->{
                option.select(newValue);
             });

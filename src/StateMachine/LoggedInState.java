@@ -43,11 +43,11 @@ public class LoggedInState implements State, FSM{
         Label lbl_UserName = new Label(account.getName());
         buttonBar.getChildren().add(lbl_UserName);
         
-        Button btn_EditProfile = new Button("Edit Profile");
-        btn_EditProfile.setOnAction((event) ->{
-            System.out.println("Still working on this! (^_^)");
-        });
-        buttonBar.getChildren().add(btn_EditProfile);
+        //Button btn_EditProfile = new Button("Edit Profile");
+        //btn_EditProfile.setOnAction((event) ->{
+            //System.out.println("Still working on this! (^_^)");
+        //});
+        //buttonBar.getChildren().add(btn_EditProfile);
         
         Button btn_Logout = new Button("Log Out");
         btn_Logout.setOnAction((event) ->{

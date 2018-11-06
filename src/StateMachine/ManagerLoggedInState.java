@@ -45,11 +45,11 @@ public class ManagerLoggedInState implements State, FSM{
 //        });
 //        buttonBar.getChildren().add(btn_Shutdown);
         
-        Button btn_EditProfile = new Button("Edit Profile");
-        btn_EditProfile.setOnAction((event) ->{
-            System.out.println("Still working on this! (^_^)");
-        });
-        buttonBar.getChildren().add(btn_EditProfile);
+        //Button btn_EditProfile = new Button("Edit Profile");
+        //btn_EditProfile.setOnAction((event) ->{
+        //    System.out.println("Still working on this! (^_^)");
+        //});
+        //buttonBar.getChildren().add(btn_EditProfile);
         
         Button btn_Logout = new Button("Log Out");
         btn_Logout.setOnAction((event) ->{

@@ -32,7 +32,7 @@ public class PurchaseConfirmedState implements State{
         body.setSpacing(5);
         
         String confirmStr = "Thank you for pretending to purchase pretend items"
-                + " from a pretend store.  Your purchase has been confirmed.";
+                + " from a pretend store.  \nYour purchase has been confirmed.";
         Label lbl_PurchaseConfirmed = new Label(confirmStr);
         body.getChildren().add(lbl_PurchaseConfirmed);
         
