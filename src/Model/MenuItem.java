@@ -104,7 +104,7 @@ public class MenuItem {
     
     /**
      * This is a set function for available 
-     * @param available 
+     * @param available Is this item available?
      */
     public void setAvailable(boolean available){
         this.available = available;

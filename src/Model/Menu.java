@@ -30,7 +30,7 @@ public class Menu {
 
     /**
      * This is the copy constructor that allows the master menu to be duplicated
-     * @param original
+     * @param original The Menu to be copied
      */
     public Menu(Menu original){
         for (MenuItem menuItem : original.getItems()){

@@ -29,7 +29,7 @@ public class StoreSelectState implements State{
     
     /**
      * Constructor which attaches the currently used Account to this State
-     * @param account 
+     * @param account The Account used to log in
      */
     public StoreSelectState(Account account){
         this.account = account;
