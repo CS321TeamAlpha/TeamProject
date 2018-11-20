@@ -1,5 +1,5 @@
 /*******************************************************************
-*   OrderManager.java
+*   MenuManager.java
 *   CS321 Group Project: Cafe Kiosk
 *   Team: Alpha
 *       Angela Allison

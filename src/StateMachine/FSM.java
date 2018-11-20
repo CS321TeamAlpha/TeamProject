@@ -14,7 +14,6 @@ import javafx.scene.Node;
 
 /**
  * Finite State Machine Interface
- * @author Bernard
  */
 public interface FSM {
     /**

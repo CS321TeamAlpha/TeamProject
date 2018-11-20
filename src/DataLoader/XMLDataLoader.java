@@ -1,5 +1,5 @@
 /*******************************************************************
-*   FileManager.java
+*   XMLDataLoader.java
 *   CS321 Group Project: Cafe Kiosk
 *   Team: Alpha
 *       Angela Allison

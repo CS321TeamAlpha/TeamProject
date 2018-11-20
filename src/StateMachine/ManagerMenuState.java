@@ -1,8 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*******************************************************************
+*   ManagerMenuState.java
+*   CS321 Group Project: Cafe Kiosk
+*   Team: Alpha
+*       Angela Allison
+*       Adam McFry
+*       Mitchell Whitehead
+*       Bernard Sabatini
+*   Date: Oct 2018
+*******************************************************************/
 package StateMachine;
 
 import Model.Account;
@@ -16,7 +21,6 @@ import javafx.scene.layout.VBox;
 
 /**
  *
- * @author Bernard
  */
 public class ManagerMenuState implements State{
     private Account account;
