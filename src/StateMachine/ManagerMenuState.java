@@ -17,17 +17,26 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 /**
- *
+ * Specific implementation of State displaying Manager settings
+ * 
  */
 public class ManagerMenuState implements State{
     private Account account;
+    /**
+     * Constructor which attaches the current Manager login to this State
+     * @param account The Manager Account used to view this State
+     */
     public ManagerMenuState(Account account){
         account = this.account;
     }
     
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
@@ -76,6 +85,5 @@ public class ManagerMenuState implements State{
         pane.setCenter(centerPane);
         
         return pane;
-    }
-    
+    }    
 }

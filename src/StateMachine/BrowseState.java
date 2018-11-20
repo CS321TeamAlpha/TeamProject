@@ -40,12 +40,22 @@ public class BrowseState implements State{
     Store store;
     Order order;
     
+    /**
+     * Constructor which establishes the Order to display
+     * @param account The account which is viewing the State
+     * @param store The store currently being viewed
+     */
     public BrowseState(Account account, Store store){
         items = FXCollections.observableArrayList();
         this.store = store;
         order = new Order(account, store);
     }
     
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
@@ -93,7 +103,7 @@ public class BrowseState implements State{
         return pane;
     }
     
-    public Node ItemDetails(MenuItem item){
+    private Node ItemDetails(MenuItem item){
         BorderPane detailPane = new BorderPane();
         VBox detailBox = new VBox();
         detailBox.setSpacing(5);

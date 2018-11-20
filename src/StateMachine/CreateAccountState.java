@@ -31,6 +31,11 @@ import javafx.scene.paint.Paint;
  */
 public class CreateAccountState implements State{
 
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
@@ -86,6 +91,5 @@ public class CreateAccountState implements State{
         buttonBar.getChildren().add(btn_Cancel);
         
         return pane;
-    }
-    
+    }    
 }

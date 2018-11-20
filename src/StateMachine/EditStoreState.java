@@ -32,11 +32,19 @@ import javafx.scene.layout.VBox;
  */
 public class EditStoreState implements State{
     private final ObservableList<Store> storeList;
+    /**
+     * Constructor which primes the list of Stores to display
+     */
     public EditStoreState(){
         storeList = FXCollections.observableArrayList();
         storeList.setAll(StoreManager.get().getItems());
     }
     
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();

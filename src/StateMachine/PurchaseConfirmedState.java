@@ -23,6 +23,11 @@ import javafx.scene.layout.VBox;
  */
 public class PurchaseConfirmedState implements State{
 
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
@@ -44,6 +49,5 @@ public class PurchaseConfirmedState implements State{
         
         pane.setCenter(body);
         return pane;
-    }
-    
+    }    
 }

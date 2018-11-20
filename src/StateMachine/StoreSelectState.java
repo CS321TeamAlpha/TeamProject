@@ -25,11 +25,21 @@ import javafx.scene.layout.VBox;
  *
  */
 public class StoreSelectState implements State{
-    private Account account;
+    private final Account account;
+    
+    /**
+     * Constructor which attaches the currently used Account to this State
+     * @param account 
+     */
     public StoreSelectState(Account account){
         this.account = account;
     }
     
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
        BorderPane pane = new BorderPane();
@@ -44,7 +54,7 @@ public class StoreSelectState implements State{
        
        return pane;
     }
-    
+
     private Node buildStoreEntry(FSM machine, Store store){
         Pane pane = new Pane();
         Button btn_Store = new Button(store.getName());

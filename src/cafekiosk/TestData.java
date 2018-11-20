@@ -13,9 +13,13 @@ package cafekiosk;
 import Model.*;
 
 /**
- *
+ * Temporary Class used to generate the initial stock menu and other data
+ * in order to test the XML Encoder
  */
 public class TestData {
+    /**
+     * Generates initial data for the operation of the program
+     */
     public void generate(){
         /*ItemManager im = ItemManager.get();
         MenuManager mm = MenuManager.get();

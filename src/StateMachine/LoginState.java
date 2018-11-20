@@ -32,6 +32,11 @@ import javafx.scene.paint.Paint;
  */
 public class LoginState implements State{
    
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();

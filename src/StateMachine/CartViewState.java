@@ -33,10 +33,19 @@ import javafx.scene.paint.Paint;
 public class CartViewState implements State{
     private final Order order;
     
+    /**
+     * Constructor which establishes the Order to display
+     * @param order An Order containing purchasable items
+     */
     public CartViewState(Order order){
         this.order = order;
     }
     
+    /**
+     * Creates the GUI for this State
+     * @param machine the State Machine handling this State
+     * @return a javaFX node (any GUI component)
+     */
     @Override
     public Node getGUI(FSM machine) {
         BorderPane pane = new BorderPane();
